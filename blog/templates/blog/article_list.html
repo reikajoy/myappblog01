@@ -1,0 +1,21 @@
+{% extends './base.html' %}
+{% block content %}
+
+<h1>記事一覧</h1>
+<table class='table table-striped table-hover'>
+    <tr>
+        <th>カテゴリ</th><th>記事名</th><th>内容</th>
+    </tr>
+    {% for article in object_list %}
+    <tr>
+        <td>{{ article.category.name }}</td>
+        <td><a href='{% url "blog:detail" article.pk %}'>{{ article.name }}</a></td>
+        <td>{{ article.content }}</td>
+    </tr>
+    {% endfor %}
+</table>
+    <div>
+        <a href='{% url "blog:create" %}'>新しい記事</a>
+    </div>
+
+{% endblock %}
